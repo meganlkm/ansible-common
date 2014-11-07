@@ -1,0 +1,11 @@
+---
+- name: common | update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: "{{ 60*60*4 }}"
+
+- name: common | install packages
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items: common_packages
